@@ -12,25 +12,26 @@ export(int) var speed := 0
 export(int) var agility := 0
 export(int) var stamina := 0
 export(Resource) var scene = null
-
+var config: Dictionary
 var neighbours := {}
-var desired_seperation = 100
 
-func _init(_name: String, _speed := 0, _agility := 0, _stamina := 1):
+func _init(_name: String, _config: Dictionary, _speed := 0, _agility := 0, _stamina := 1):
 	name = _name
+	config = _config
 	speed = _speed
 	agility = _agility
 	stamina = _stamina
 	
-func update(target: Vector2):
+func update(delta: float, target: Vector2):
 	#print("update %s %s" % [target, seperation()])
 	seperation()
 	self.heading = (
-	                heading * 5
-	                + (target - self.position).normalized() * 0.05
-					#+ Vector2(rand_range(-0.05, 0.05), rand_range(-0.05, 0.05))
-					+ seperation() * 2
-					+ coheasion() * 0.01
+	                heading * config.fade
+	                + (target - self.position).normalized() * config.target
+					+ Vector2(rand_range(-0.05, 0.05), rand_range(-0.05, 0.05)) * config.random
+					+ seperation() * config.seperation
+					+ cohesion() * config.cohesion
+					+ edge_avoid() * config.edge_avoid
 					).normalized()
 	if(position.x <= 0 or position.x >= common_data.window_size.x):
 		position.x = clamp(position.x, 0, common_data.window_size.x)
@@ -39,16 +40,30 @@ func update(target: Vector2):
 		position.y = clamp(position.y, 0, common_data.window_size.y)
 		heading = heading.reflect(Vector2(1, 0))
 		
-	self.position += self.heading
+	self.position += self.heading * delta * speed
 	
-func coheasion():
+func edge_avoid():
+	var return_val = Vector2(0, 0)
+	if position.x <= 100:
+		return_val = Vector2((100 - position.x) / 100, 0)
+	elif position.x >= common_data.window_size.x - 100:
+		return_val = Vector2(-(100 + position.x - common_data.window_size.x) / 100, 0)
+	
+	if position.y <= 100:
+		return_val += Vector2(0, (100 - position.y) / 100)
+	elif position.y >= common_data.window_size.y - 100:
+		return_val += Vector2(0, -(100 + position.y - common_data.window_size.y) / 100)
+		
+	return return_val
+	
+func cohesion():
 	if neighbours.size() == 0:
 		return heading
 	var count = 0
 	var sum = Vector2(0, 0)
 	for neighbour in neighbours.values():
 		var dist = position.distance_to(neighbour.position)
-		if dist > desired_seperation:
+		if dist > config.desired_seperation:
 			sum += neighbour.position * dist
 			count += 1
 	if count > 0:
@@ -63,7 +78,7 @@ func seperation():
 		var dist = position.distance_to(neighbour.position)
 		if dist == 0:
 			return Vector2(rand_range(-1, 1), rand_range(-1, 1))
-		if dist < desired_seperation:
+		if dist < config.desired_seperation:
 			mean_heading += (position - neighbour.position).normalized() / dist
 			count += 1
 	if count:

@@ -5,10 +5,10 @@ var SquadHint = preload("res://actors/SquadHint.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#common_data.add_squad(2)
-	#common_data.add_squad(5)
-	common_data.add_squad(30)
-	#common_data.add_squad(1)
+	common_data.add_squad(50)
+	common_data.add_squad(75)
+	#common_data.add_squad(100)
+	common_data.add_squad(25)
 
 	for squad in common_data.squads.values():
 		squad.scene = SquadHint.instance()
@@ -20,7 +20,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	for squad in common_data.squads.values():
-		squad.move(delta)
+		squad.update(delta)
 
 func _on_Stage_resized():
 	common_data.window_size = get_viewport_rect().size
