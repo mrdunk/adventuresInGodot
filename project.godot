@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://actor.gd"
+}, {
+"base": "Resource",
+"class": "Squad",
+"language": "GDScript",
+"path": "res://squad.gd"
+} ]
+_global_script_class_icons={
+"Actor": "",
+"Squad": ""
+}
+
+[application]
+
+config/name="adventuresInGodot"
+run/main_scene="res://Stage.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+common_data="*res://common_data.gd"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
