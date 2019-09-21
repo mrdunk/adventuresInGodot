@@ -1,24 +1,27 @@
+# A squad is a collection of actors which will operate together as a unit.
 extends Resource
-
 class_name Squad
+
+# Will be raised whenever the squad's target position changes.
+signal changed_position
 
 export(String) var name := ""
 export(Vector2) var position := Vector2()
 export(Vector2) var heading := Vector2(1, 1).normalized()
 export(int) var speed := 100
 var members := {}
-export(Resource) var scene = null
 
+# Variables that affect how the squad's Actors move.
 var config := {
-	"neighbour_dist": 200,
-	"desired_seperation": 100,
-	"seperation": 10,
-	"cohesion": 0.2,
-	"heading": 1,
-	"fade": 5,
-	"target": 0.4,
-	"random": 1,
-	"edge_avoid": 0.5
+	"neighbour_dist": 200,		# Actor attracted to neighbours within this distance.
+	"desired_seperation": 100,	# Actor repelled from any neighbour closer than this.
+	"seperation": 10,			# How strongly repelled from neighbours.
+	"cohesion": 0.2,			# How strongly attracted to neighbours.
+	"heading": 1,				# TODO
+	"fade": 1,
+	"target": 0.4,				# How strongly attracted to Squad's tartget point.
+	"random": 1,				# How much random jitter to apply.
+	"edge_avoid": 0.5			# How strongly to be repelled from window edges.
 }
 
 func _init(count: int):
@@ -40,21 +43,22 @@ func add_member(member: Actor):
 
 func update(delta: float):
 	position += heading * speed * delta
+	emit_signal("changed_position", name, position)
 	
 	if(position.x <= 0 or position.x >= common_data.window_size.x):
 		position.x = clamp(position.x, 0, common_data.window_size.x)
+		heading += Vector2(rand_range(-0.1, 0.1), rand_range(-0.1, 0.1))
+		heading = heading.normalized()
 		heading = heading.reflect(Vector2(0, 1))
 	if(position.y <= 0 or position.y >= common_data.window_size.y):
 		position.y = clamp(position.y, 0, common_data.window_size.y)
+		heading += Vector2(rand_range(-0.1, 0.1), rand_range(-0.1, 0.1))
+		heading = heading.normalized()
 		heading = heading.reflect(Vector2(1, 0))
 		
-	if(!scene):
-		return
-	scene.position = position
-	
 	update_members(delta)
 	update_neighbours()
-
+	
 func update_members(delta: float):
 	for member in members.values():
 		member.update(delta, position)
@@ -69,7 +73,8 @@ func update_neighbours():
 		neighbours.pop_front()
 		for neighbour in neighbours:
 			if member.position.distance_squared_to(neighbour.position) < neighbour_dist_squared:
-				member.neighbours[neighbour.name] = neighbour
-				neighbour.neighbours[member.name] = member
-			
+				if member.neighbours.size() < 2:
+					member.neighbours[neighbour.name] = neighbour
+				#if neighbour.neighbours.size() < 5:
+				#	neighbour.neighbours[member.name] = member
 			
