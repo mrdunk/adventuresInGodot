@@ -29,7 +29,7 @@ func add_squad(count: int):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	add_squad(100)
+	add_squad(50)
 	add_squad(75)
 	#add_squad(100)
 	add_squad(25)
@@ -43,3 +43,4 @@ func _process(delta: float):
 func _on_Stage_resized():
 	common_data.window_size = get_viewport_rect().size
 	print(common_data.window_size)
+

@@ -2,7 +2,7 @@ extends Node
 
 var actors := {}
 var squads := {}
-export var window_size := Vector2()
+var window_size := Vector2()
 
 func add_squad(member_count := 1):
 	var squad = Squad.new(member_count)

@@ -5,14 +5,14 @@ class_name Actor
 signal changed_position
 signal changed_heading
 
-export(Vector2) var position := Vector2(
+var position := Vector2(
 	rand_range(0, common_data.window_size.x),
 	rand_range(0, common_data.window_size.y)) setget set_position
-export(Vector2) var heading := Vector2(1, 1) setget set_heading
-export(String) var name := ""
-export(int) var speed := 0
-export(int) var agility := 0
-export(int) var stamina := 0
+var heading := Vector2(1, 1) setget set_heading
+var name := ""
+var speed := 0
+var agility := 0
+var stamina := 0
 var config: Dictionary
 var neighbours := {}
 
@@ -37,9 +37,11 @@ func update(delta: float, target: Vector2):
 	if(position.x <= 0 or position.x >= common_data.window_size.x):
 		position.x = clamp(position.x, 0, common_data.window_size.x)
 		heading = heading.reflect(Vector2(0, 1))
+		heading += Vector2(rand_range(0, common_data.window_size.x), rand_range(0, common_data.window_size.y)).normalized()
 	if(position.y <= 0 or position.y >= common_data.window_size.y):
 		position.y = clamp(position.y, 0, common_data.window_size.y)
 		heading = heading.reflect(Vector2(1, 0))
+		heading += Vector2(rand_range(0, common_data.window_size.x), rand_range(0, common_data.window_size.y)).normalized()
 		
 	self.position += self.heading * delta * speed
 	
