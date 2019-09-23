@@ -8,6 +8,7 @@ margin_bottom = 40.0
 script = ExtResource( 1 )
 
 [node name="MenuPopup" type="PopupPanel" parent="."]
+visible = true
 margin_right = 372.0
 margin_bottom = 324.0
 
@@ -25,145 +26,222 @@ margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MenuPopupDisable" type="Button" parent="MenuPopup/MarginContainer/VBoxContainer"]
+[node name="ButtonMenuPopupDisable" type="Button" parent="MenuPopup/MarginContainer/VBoxContainer"]
 margin_right = 20.0
 margin_bottom = 20.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "X"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer"]
+[node name="SquadPicker" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 364.0
-margin_bottom = 54.0
+margin_bottom = 44.0
 
-[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SquadPrevious" type="Button" parent="MenuPopup/MarginContainer/VBoxContainer/SquadPicker"]
+margin_right = 67.0
+margin_bottom = 20.0
+text = "Previous"
+
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/SquadPicker"]
+margin_left = 71.0
+margin_top = 3.0
+margin_right = 318.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "squad_name"
+
+[node name="SquadNext" type="Button" parent="MenuPopup/MarginContainer/VBoxContainer/SquadPicker"]
+margin_left = 322.0
+margin_right = 364.0
+margin_bottom = 20.0
+text = "Next"
+
+[node name="Sliders" type="VBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 364.0
+margin_bottom = 180.0
+
+[node name="NeighbourDist" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
+margin_right = 364.0
+margin_bottom = 30.0
+
+[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/NeighbourDist"]
 margin_right = 100.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 
-[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer/LabelContainer"]
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/NeighbourDist/LabelContainer"]
 margin_left = 7.0
 margin_top = 8.0
 margin_right = 93.0
 margin_bottom = 22.0
 text = "Label"
 
-[node name="SliderContainer2" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SliderContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/NeighbourDist"]
 margin_left = 104.0
 margin_right = 260.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 
-[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer/SliderContainer2"]
+[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/NeighbourDist/SliderContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 149.0
 margin_bottom = 23.0
 
-[node name="LabelContainer3" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ValueContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/NeighbourDist"]
 margin_left = 264.0
 margin_right = 364.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 
-[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer/LabelContainer3"]
+[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/NeighbourDist/ValueContainer"]
 margin_left = 7.0
 margin_top = 8.0
 margin_right = 93.0
 margin_bottom = 22.0
 text = "value%"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer"]
-margin_top = 58.0
+[node name="DesiredSeperation" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
+margin_top = 34.0
 margin_right = 364.0
-margin_bottom = 88.0
+margin_bottom = 64.0
 
-[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/DesiredSeperation"]
 margin_right = 100.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 
-[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer2/LabelContainer"]
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/DesiredSeperation/LabelContainer"]
 margin_left = 7.0
 margin_top = 8.0
 margin_right = 93.0
 margin_bottom = 22.0
 text = "Label"
 
-[node name="SliderContainer2" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="SliderContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/DesiredSeperation"]
 margin_left = 104.0
 margin_right = 260.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 
-[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer2/SliderContainer2"]
+[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/DesiredSeperation/SliderContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 149.0
 margin_bottom = 23.0
 
-[node name="LabelContainer3" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="ValueContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/DesiredSeperation"]
 margin_left = 264.0
 margin_right = 364.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 
-[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer2/LabelContainer3"]
+[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/DesiredSeperation/ValueContainer"]
 margin_left = 7.0
 margin_top = 8.0
 margin_right = 93.0
 margin_bottom = 22.0
 text = "value%"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer"]
-margin_top = 92.0
+[node name="Seperation" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
+margin_top = 68.0
 margin_right = 364.0
-margin_bottom = 122.0
+margin_bottom = 98.0
 
-[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Seperation"]
 margin_right = 100.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 
-[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer3/LabelContainer"]
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Seperation/LabelContainer"]
 margin_left = 7.0
 margin_top = 8.0
 margin_right = 93.0
 margin_bottom = 22.0
 text = "Label"
 
-[node name="SliderContainer2" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="SliderContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Seperation"]
 margin_left = 104.0
 margin_right = 260.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 size_flags_horizontal = 3
 
-[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer3/SliderContainer2"]
+[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Seperation/SliderContainer"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 149.0
 margin_bottom = 23.0
 
-[node name="LabelContainer3" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="ValueContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Seperation"]
 margin_left = 264.0
 margin_right = 364.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 100, 0 )
 
-[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/HBoxContainer3/LabelContainer3"]
+[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Seperation/ValueContainer"]
 margin_left = 7.0
 margin_top = 8.0
 margin_right = 93.0
 margin_bottom = 22.0
 text = "value%"
 
-[node name="MenuPopupEnable" type="Button" parent="."]
+[node name="Cohesion" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
+margin_top = 102.0
+margin_right = 364.0
+margin_bottom = 132.0
+
+[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Cohesion"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Cohesion/LabelContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "Label"
+
+[node name="SliderContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Cohesion"]
+margin_left = 104.0
+margin_right = 260.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Cohesion/SliderContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 23.0
+
+[node name="ValueContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Cohesion"]
+margin_left = 264.0
+margin_right = 364.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Cohesion/ValueContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "value%"
+
+[node name="ButtonMenuPopupEnable" type="Button" parent="."]
 margin_right = 12.0
 margin_bottom = 20.0
 text = "Config Squad"
-[connection signal="pressed" from="MenuPopup/MarginContainer/VBoxContainer/MenuPopupDisable" to="." method="_on_MenuPopupDisable_pressed"]
-[connection signal="pressed" from="MenuPopupEnable" to="." method="_on_MenuPopupEnable_pressed"]
+[connection signal="pressed" from="MenuPopup/MarginContainer/VBoxContainer/ButtonMenuPopupDisable" to="." method="_on_ButtonMenuPopupDisable_pressed"]
+[connection signal="pressed" from="MenuPopup/MarginContainer/VBoxContainer/SquadPicker/SquadPrevious" to="." method="_on_SquadPrevious_pressed"]
+[connection signal="pressed" from="MenuPopup/MarginContainer/VBoxContainer/SquadPicker/SquadNext" to="." method="_on_SquadNext_pressed"]
+[connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/NeighbourDist/SliderContainer/HSlider" to="." method="_on_NeighbourDist_HSlider_value_changed"]
+[connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/DesiredSeperation/SliderContainer/HSlider" to="." method="_on_DesiredSeperation_HSlider_value_changed"]
+[connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/Seperation/SliderContainer/HSlider" to="." method="_on_Seperation_HSlider_value_changed"]
+[connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/Cohesion/SliderContainer/HSlider" to="." method="_on_Cohesion_HSlider_value_changed"]
+[connection signal="pressed" from="ButtonMenuPopupEnable" to="." method="_on_ButtonMenuPopupEnable_pressed"]
