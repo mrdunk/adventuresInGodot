@@ -8,7 +8,6 @@ signal changed_position
 var name := ""
 var position := Vector2()
 var heading := Vector2(1, 1).normalized()
-var speed := 100
 var members := {}
 
 # Variables that affect how the squad's Actors move.
@@ -17,11 +16,11 @@ var config := {
   "desired_seperation": 50,	# Actor repelled from any neighbour closer than this.
   "seperation": 50,			# How strongly repelled from neighbours.
   "cohesion": 50,			# How strongly attracted to neighbours.
-  "heading": 1,				# TODO
-  "fade": 1,
-  "target": 0.4,				# How strongly attracted to Squad's tartget point.
+  "follow": 50,				# TODO
+  "target": 50,				# How strongly attracted to Squad's tartget point.
   "random": 1,				# How much random jitter to apply.
-  "edge_avoid": 0.5			# How strongly to be repelled from window edges.
+  "edge_avoid": 50,		# How strongly to be repelled from window edges.
+  "speed": 100        # Squad target speed.
 }
 
 func _init(count: int):
@@ -36,14 +35,14 @@ func _init(count: int):
 
 func _add_member():
   var actor_name = "actor_%s_%s" % [common_data.squads.size(), members.size()]
-  var actor_instance = Actor.new(actor_name, config, 100)
+  var actor_instance = Actor.new(actor_name, name, config, 100)
   common_data.actors[actor_name] = actor_instance
   members[actor_name] = actor_instance
 
 # Called once per frame to update squad.
 # Updates position as well as calculating neighbours of individual actors.
 func update(delta: float):
-  position += heading * speed * delta
+  position += heading * config.speed * delta
   emit_signal("changed_position", name, position)
   
   if(position.x <= 0 or position.x >= common_data.window_size.x):

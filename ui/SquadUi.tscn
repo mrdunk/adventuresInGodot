@@ -10,19 +10,19 @@ script = ExtResource( 1 )
 [node name="MenuPopup" type="PopupPanel" parent="."]
 visible = true
 margin_right = 372.0
-margin_bottom = 324.0
+margin_bottom = 358.0
 
 [node name="MarginContainer" type="MarginContainer" parent="MenuPopup"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 368.0
-margin_bottom = 320.0
+margin_bottom = 354.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuPopup/MarginContainer"]
 margin_right = 364.0
-margin_bottom = 316.0
+margin_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -60,7 +60,7 @@ text = "Next"
 [node name="Sliders" type="VBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 364.0
-margin_bottom = 180.0
+margin_bottom = 350.0
 
 [node name="NeighbourDist" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
 margin_right = 364.0
@@ -233,6 +233,221 @@ margin_right = 93.0
 margin_bottom = 22.0
 text = "value%"
 
+[node name="Follow" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
+margin_top = 136.0
+margin_right = 364.0
+margin_bottom = 166.0
+
+[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Follow"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Follow/LabelContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "Label"
+
+[node name="SliderContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Follow"]
+margin_left = 104.0
+margin_right = 260.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Follow/SliderContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 23.0
+
+[node name="ValueContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Follow"]
+margin_left = 264.0
+margin_right = 364.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Follow/ValueContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "value%"
+
+[node name="Target" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
+margin_top = 170.0
+margin_right = 364.0
+margin_bottom = 200.0
+
+[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Target"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Target/LabelContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "Label"
+
+[node name="SliderContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Target"]
+margin_left = 104.0
+margin_right = 260.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Target/SliderContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 23.0
+
+[node name="ValueContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Target"]
+margin_left = 264.0
+margin_right = 364.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Target/ValueContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "value%"
+
+[node name="Random" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
+margin_top = 204.0
+margin_right = 364.0
+margin_bottom = 234.0
+
+[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Random"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Random/LabelContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "Label"
+
+[node name="SliderContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Random"]
+margin_left = 104.0
+margin_right = 260.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Random/SliderContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 23.0
+
+[node name="ValueContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Random"]
+margin_left = 264.0
+margin_right = 364.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Random/ValueContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "value%"
+
+[node name="EdgeAvoid" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
+margin_top = 238.0
+margin_right = 364.0
+margin_bottom = 268.0
+
+[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/EdgeAvoid"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/EdgeAvoid/LabelContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "Label"
+
+[node name="SliderContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/EdgeAvoid"]
+margin_left = 104.0
+margin_right = 260.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/EdgeAvoid/SliderContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 23.0
+
+[node name="ValueContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/EdgeAvoid"]
+margin_left = 264.0
+margin_right = 364.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/EdgeAvoid/ValueContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "value%"
+
+[node name="Speed" type="HBoxContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders"]
+margin_top = 272.0
+margin_right = 364.0
+margin_bottom = 302.0
+
+[node name="LabelContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Speed"]
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Label" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Speed/LabelContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "Label"
+
+[node name="SliderContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Speed"]
+margin_left = 104.0
+margin_right = 260.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+
+[node name="HSlider" type="HSlider" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Speed/SliderContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 149.0
+margin_bottom = 23.0
+
+[node name="ValueContainer" type="PanelContainer" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Speed"]
+margin_left = 264.0
+margin_right = 364.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+
+[node name="Value" type="Label" parent="MenuPopup/MarginContainer/VBoxContainer/Sliders/Speed/ValueContainer"]
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "value%"
+
 [node name="ButtonMenuPopupEnable" type="Button" parent="."]
 margin_right = 12.0
 margin_bottom = 20.0
@@ -244,4 +459,9 @@ text = "Config Squad"
 [connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/DesiredSeperation/SliderContainer/HSlider" to="." method="_on_DesiredSeperation_HSlider_value_changed"]
 [connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/Seperation/SliderContainer/HSlider" to="." method="_on_Seperation_HSlider_value_changed"]
 [connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/Cohesion/SliderContainer/HSlider" to="." method="_on_Cohesion_HSlider_value_changed"]
+[connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/Follow/SliderContainer/HSlider" to="." method="_on_Follow_HSlider_value_changed"]
+[connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/Target/SliderContainer/HSlider" to="." method="_on_Target_HSlider_value_changed"]
+[connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/Random/SliderContainer/HSlider" to="." method="_on_Random_HSlider_value_changed"]
+[connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/EdgeAvoid/SliderContainer/HSlider" to="." method="_on_EdgeAvoid_HSlider_value_changed"]
+[connection signal="value_changed" from="MenuPopup/MarginContainer/VBoxContainer/Sliders/Speed/SliderContainer/HSlider" to="." method="_on_Speed_HSlider_value_changed"]
 [connection signal="pressed" from="ButtonMenuPopupEnable" to="." method="_on_ButtonMenuPopupEnable_pressed"]

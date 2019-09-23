@@ -7,32 +7,32 @@ var active_squad : Squad
 
 var properties := {
   "neighbour_dist":
-    { "value": 200,		# Actor attracted to neighbours within this distance.
+    { "value": 0,		# Actor attracted to neighbours within this distance.
       "units": "px"},
   "desired_seperation":
-    { "value": 150,	# Actor repelled from any neighbour closer than this.
+    { "value": 0,	# Actor repelled from any neighbour closer than this.
       "units": "px"},
   "seperation":
-    { "value": 20,			# How strongly repelled from neighbours.
+    { "value": 0,			# How strongly repelled from neighbours.
       "units": "%"},
   "cohesion":
-    { "value": 0.1,			# How strongly attracted to neighbours.
+    { "value": 0,			# How strongly attracted to neighbours.
       "units": "%"},
-  "heading":
-    { "value": 1,				# TODO
-      "units": "%"},
-  "fade":
-    { "value": 1,
+  "follow":
+    { "value": 0,				# TODO
       "units": "%"},
   "target":
-    { "value": 0.4,				# How strongly attracted to Squad's tartget point.
+    { "value": 0,				# How strongly attracted to Squad's tartget point.
       "units": "%"},
   "random":
-    { "value": 1,				# How much random jitter to apply.
+    { "value": 0,				# How much random jitter to apply.
       "units": "%"},
   "edge_avoid":
-    { "value": 0.5,			# How strongly to be repelled from window edges.
-      "units": "%"}
+    { "value": 0,			# How strongly to be repelled from window edges.
+      "units": "%"},
+  "speed":
+    { "value": 0,     # Squad target speed
+      "units": "px"}
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -88,6 +88,26 @@ func _on_Seperation_HSlider_value_changed(value):
 func _on_Cohesion_HSlider_value_changed(value):
   properties["cohesion"].value = value
   _update_slider($MenuPopup/MarginContainer/VBoxContainer/Sliders/Cohesion)
+  
+func _on_Follow_HSlider_value_changed(value):
+  properties["follow"].value = value
+  _update_slider($MenuPopup/MarginContainer/VBoxContainer/Sliders/Follow)
+
+func _on_Target_HSlider_value_changed(value):
+  properties["target"].value = value
+  _update_slider($MenuPopup/MarginContainer/VBoxContainer/Sliders/Target)
+
+func _on_Random_HSlider_value_changed(value):
+  properties["random"].value = value
+  _update_slider($MenuPopup/MarginContainer/VBoxContainer/Sliders/Random)
+
+func _on_EdgeAvoid_HSlider_value_changed(value):
+  properties["edge_avoid"].value = value
+  _update_slider($MenuPopup/MarginContainer/VBoxContainer/Sliders/EdgeAvoid)
+
+func _on_Speed_HSlider_value_changed(value):
+  properties["speed"].value = value
+  _update_slider($MenuPopup/MarginContainer/VBoxContainer/Sliders/Speed)
 
 func _on_ButtonMenuPopupEnable_pressed():
   $MenuPopup.popup()
@@ -116,5 +136,3 @@ func _on_SquadNext_pressed():
   if active_squad_id < squad_names.size() -1:
     active_squad_id += 1
     _update_active_squad()
-
-
